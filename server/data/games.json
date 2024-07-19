@@ -1,0 +1,26 @@
+{
+    "122860ac-3794-48f0-9269-fa997a23760e": {
+        "title": "Mortal Kombat",
+        "category": "Fighting Action Adventure",
+        "maxLevel": "11",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Mortal_Kombat_Logo.svg/250px-Mortal_Kombat_Logo.svg.png",
+        "summary": "Mortal Kombat is an American media franchise centered on a series of fighting video games originally developed by Midway Games in 1992.",
+        "_id": "122860ac-3794-48f0-9269-fa997a23760e"
+    },
+    "f024b89d-6d93-40de-aedf-823645eac5a9": {
+        "title": "Street Fighter 6",
+        "category": "Fighting",
+        "maxLevel": "10",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Street_Fighter_6_box_art.jpg",
+        "summary": "Street Fighter 6[a][b] is a 2023 fighting game developed and published by Capcom.",
+        "_id": "f024b89d-6d93-40de-aedf-823645eac5a9"
+    },
+    "6525829b-f22b-4cd7-ad52-2ebabd025fb8": {
+        "title": "Lords of the Fallen",
+        "category": "Action role-playing",
+        "maxLevel": "15",
+        "imageUrl": "https://th.bing.com/th/id/OIP.2HxB0oNoJEQ4lBarXgqXKQHaEK?rs=1&pid=ImgDetMain",
+        "summary": "Lords of the Fallen is an action role-playing video game developed by Hexworks and published by CI Games.",
+        "_id": "6525829b-f22b-4cd7-ad52-2ebabd025fb8"
+    }
+}
