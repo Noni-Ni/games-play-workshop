@@ -10,7 +10,7 @@ export function useLogin(){
     const loginHandler = async( email, password) =>{
         
             const result = await login(email, password);
-
+            //const {password: _, ...authData} = await login(email, password) way to remove password from authState
             changeAuthState(result);
             return result;
     }
