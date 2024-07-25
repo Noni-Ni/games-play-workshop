@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { getAll, getOne } from "../api/games-api";
+import { create, getAll, getOne } from "../api/games-api";
 
 export function useGetAllGames(){
 
@@ -30,4 +30,14 @@ export function useGetOneGame(gameId){
         game,
         setGame
     ]
+}
+
+export function useCreateGame(){
+    const gameCreateHandler = async (gameData) => {
+       const result = await create(gameData)
+       return result;
+        
+    }
+
+    return gameCreateHandler
 }
