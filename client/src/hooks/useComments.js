@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { create, getAll } from "../api/comments-api";
 
 export  function useCreateComment(){
@@ -11,15 +11,30 @@ export  function useCreateComment(){
      return commentCreateHandler
 }
 
+function commentReducer( state, action ){
+     switch (action.type) {
+        case 'GET_ALL':
+            return action.payload.slice();
+        case 'ADD_COMMENT':
+            return [...state, action.payload];
+            
+     
+        default:
+            return state;
+           
+     }
+    return state;
+}
+
 export function useGetAllComments(gameId){
-    const [comments, setComments]  = useState([]);
+    const [comments, dispatch ]  = useReducer(commentReducer, []);
 
     useEffect(()=>{
         (async()=> {
            const result = await getAll(gameId);
-           setComments(result);
+           dispatch({type: 'GET_ALL', payload: result});
         })()
     },[ gameId ])
 
-    return [ comments, setComments ]
+    return [ comments, dispatch ]
 }

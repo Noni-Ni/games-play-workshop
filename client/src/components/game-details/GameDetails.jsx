@@ -13,17 +13,20 @@ const initialValues = {
 export default function GameDetails(){
 
     const {gameId} = useParams();
-    const [ comments , setComments] = useGetAllComments(gameId);
-    console.log(comments)
+    const [ comments , dispatch] = useGetAllComments(gameId);
+    
     const createComment = useCreateComment();
     const [game, setGame] = useGetOneGame(gameId);
-    const { isAuthenticated } = useContext(AuthContext)
+    const { isAuthenticated ,_id, email } = useContext(AuthContext)
     
 
     const { changeHandler, submitHandler, values } = useForm(initialValues, async( { comment }) => {
            try {
              const response = await createComment(gameId, comment);
-             setComments(oldComments => [ ...oldComments, response])
+             
+             //setComments(oldComments => [ ...oldComments, response])
+             dispatch({type: 'ADD_COMMENT', payload: {...response, author: { email }}})
+
            } catch (error) {
              console.log(error.message);
            }
@@ -60,7 +63,7 @@ export default function GameDetails(){
 
                          
                         
-                        ( comments.map( comment => 
+                        (  comments.map( comment => 
                             <li className="comment" key={comment._id} >
                             <p>{comment.author.email}: {comment.text}</p>
                         </li>)
@@ -75,10 +78,10 @@ export default function GameDetails(){
                 </div>
 
                 {/*<!-- Edit/Delete buttons ( Only for creator of this game )  -->*/}
-                <div className="buttons">
+                { _id === game._ownerId ? <div className="buttons">
                     <a href="#" className="button">Edit</a>
                     <a href="#" className="button">Delete</a>
-                </div>
+                </div> : '' }
             </div>
 
             {/*<!-- Bonus -->*/}
