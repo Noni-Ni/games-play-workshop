@@ -20,8 +20,14 @@ export default function GameDetails(){
     const { isAuthenticated } = useContext(AuthContext)
     
 
-    const { changeHandler, submitHandler, values } = useForm(initialValues, ( { comment }) => {
-            createComment(gameId, comment);
+    const { changeHandler, submitHandler, values } = useForm(initialValues, async( { comment }) => {
+           try {
+             const response = await createComment(gameId, comment);
+             setComments(oldComments => [ ...oldComments, response])
+           } catch (error) {
+             console.log(error.message);
+           }
+        
     })
 
 
