@@ -1,4 +1,4 @@
-import { post } from "./requester";
+import { get, post } from "./requester";
 
 
 const BASE_URL = 'http://localhost:3030/users';
@@ -13,4 +13,8 @@ export async function register(email, password){
     const authData = await post(`${BASE_URL}/register`, {email, password});
 
     return authData;
+}
+
+export async function logout(){
+    await get(`${BASE_URL}/logout`);
 }
