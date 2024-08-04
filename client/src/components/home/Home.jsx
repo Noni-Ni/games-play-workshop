@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getAll } from "../../api/games-api";
+import { getAll, getLatest } from "../../api/games-api";
 
 import GameHomeItem from "./game-home-item/GameHomeItem";
 
@@ -10,9 +10,9 @@ export default function Home(){
 
     useEffect(() => {
         async function getHomeGames (){
-            const response = await getAll()
-            const result = response.reverse().slice(0,3);
-            setGames(result)
+            const response = await getLatest()
+            
+            setGames(response)
         }
         getHomeGames();
     }, [])

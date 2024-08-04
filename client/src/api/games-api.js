@@ -10,6 +10,22 @@ export const getAll = async() => {
    return games;
 }
 
+export const getLatest = async() => {
+
+    const urlSearchParams = new URLSearchParams({
+        sortBy: `_createdOn desc`,
+        pageSize: 3
+    })
+    //const result = await get(`${BASE_URL}?${urlSearchParams.toString()}`);
+    const result = await get(`http://localhost:3030/data/games?sortBy=_createdOn%20desc&pageSize=3`);
+    
+
+    //http://localhost:3030/data/games?sortBy=_createdOn+desc&pageSize=3
+    
+ 
+    return result;
+ }
+
 export const getOne = async (gameId) => {
     const response = await get(`${BASE_URL}/${gameId}`)
     return response;
