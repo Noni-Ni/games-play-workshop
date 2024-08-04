@@ -1,4 +1,4 @@
-import { get, post } from "./requester"
+import { del, get, post } from "./requester"
 
 const BASE_URL = 'http://localhost:3030/data/games'
 
@@ -19,6 +19,11 @@ export const getOne = async (gameId) => {
 export const create = async (gameData) => {
     const response = await post(`${BASE_URL}`, gameData)
     return response;
+    
+}
+
+export const remove = async (gameId) => {
+    await del(`${BASE_URL}/${gameId}`);
     
 }
 
