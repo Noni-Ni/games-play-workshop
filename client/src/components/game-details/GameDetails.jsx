@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { create, getAll } from "../../api/comments-api";
 import { useGetOneGame } from "../../hooks/useGames";
 import { useForm } from "../../hooks/useForm";
@@ -22,6 +22,7 @@ export default function GameDetails(){
     
 
     const { changeHandler, submitHandler, values } = useForm(initialValues, async( { comment }) => {
+
            try {
              const response = await createComment(gameId, comment);
              
@@ -35,6 +36,10 @@ export default function GameDetails(){
     })
 
     const gameDeleteHandler = async() => {
+        const isConfimed = confirm('Are you sure you want to delete this game ?');
+        if(! isConfimed){
+            return;
+        }
         try {
             await remove(gameId);
             navigate('/')
@@ -88,7 +93,7 @@ export default function GameDetails(){
 
                 {/*<!-- Edit/Delete buttons ( Only for creator of this game )  -->*/}
                 { _id === game._ownerId ? <div className="buttons">
-                    <a href="#" className="button">Edit</a>
+                    <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
                     <a href="#" onClick={gameDeleteHandler}  className="button">Delete</a>
                 </div> : '' }
             </div>
