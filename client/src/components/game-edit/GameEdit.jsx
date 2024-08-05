@@ -25,7 +25,7 @@ export default function GameEdit() {
         } catch (err) {
             console.log(err.message)
         }
-    }, {reinitializeForm : true})
+    }, true)
     return (
         <section id="edit-page" className="auth">
             <form id="edit" onSubmit={submitHandler} >
